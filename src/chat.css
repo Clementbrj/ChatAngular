@@ -1,0 +1,92 @@
+/* Conteneur principal du chat */
+.chat-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Bouton de retour */
+  .back-button {
+    background-color: #2196F3; /* Bleu pour le retour */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  
+  .back-button:hover {
+    background-color: #1e88e5;
+  }
+  
+  /* Titre de la discussion */
+  h2 {
+    text-align: center;
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Conteneur des messages */
+  .messages-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Bulles de message */
+  .message-bubble {
+    background-color: #e1f5fe;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 20px;
+    font-size: 1rem;
+    max-width: 80%;
+    word-wrap: break-word;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Champ de saisie et bouton d'envoi */
+  .send-message-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .send-message-container input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .send-message-container button {
+    background-color: #4CAF50; /* Vert pour envoyer */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .send-message-container button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Amélioration de l'apparence du champ de texte */
+  .send-message-container input:focus,
+  .send-message-container button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(66, 133, 244, 0.8);
+  }
+  
