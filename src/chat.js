@@ -42,6 +42,7 @@ const Chat = () => {
       await addDoc(collection(db, "chats", chatId, "messages"), {
         text: newMessage,
         sender: user.uid,
+        senderName: user.displayName || "Utilisateur Anonyme", // Ajoute le nom de l'utilisateur
         timestamp: new Date(),
       });
       setNewMessage(""); // Vide le champ de texte
@@ -66,7 +67,7 @@ const Chat = () => {
       <div className="messages-container">
         {messages.map((message) => (
           <div key={message.id} className="message-bubble">
-            <p>{message.text}</p>
+            <p><strong>{message.senderName} :</strong> {message.text}</p> {/* Affiche le nom de l'utilisateur et le message */}
           </div>
         ))}
       </div>
