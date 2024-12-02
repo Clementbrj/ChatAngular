@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { collection, onSnapshot, addDoc, deleteDoc, doc } from "firebase/firestore";
 import { db } from "./firebase";
-import { getAuth, signOut } from "firebase/auth"; // Importer la fonction signOut
-import { Link } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom"; // Importer useNavigate
 import "./chatlist.css";
 
 const ChatList = () => {
@@ -10,6 +10,7 @@ const ChatList = () => {
   const [newChatName, setNewChatName] = useState("");
   const auth = getAuth();
   const user = auth.currentUser; // Récupérer l'utilisateur actuel
+  const navigate = useNavigate(); // Initialiser useNavigate
 
   // Charger les discussions
   useEffect(() => {
@@ -40,7 +41,6 @@ const ChatList = () => {
   const handleDeleteChat = async (chatId) => {
     try {
       await deleteDoc(doc(db, "chats", chatId));
-      console.log("chatId à supprimer :", chatId);
     } catch (error) {
       console.error("Erreur lors de la suppression de la discussion :", error.message);
     }
@@ -50,7 +50,7 @@ const ChatList = () => {
   const handleSignOut = async () => {
     try {
       await signOut(auth); // Déconnexion de l'utilisateur
-      console.log("Utilisateur déconnecté");
+      navigate("/auth"); // Redirection après déconnexion
     } catch (error) {
       console.error("Erreur lors de la déconnexion :", error.message);
     }
@@ -63,8 +63,10 @@ const ChatList = () => {
       {/* Vérification si l'utilisateur est connecté */}
       {user ? (
         <div className="user-info">
-          <p>Bienvenue, {user.displayName || user.email} !    </p>
-          <button onClick={handleSignOut} className="logout-button">Se déconnecter</button>
+          <p>Bienvenue, {user.displayName || user.email} !</p>
+          <button onClick={handleSignOut} className="logout-button">
+            Se déconnecter
+          </button>
         </div>
       ) : (
         <p>Veuillez vous connecter pour participer aux discussions.</p>
@@ -77,7 +79,10 @@ const ChatList = () => {
             <Link to={`/chat/${chat.id}`} className="chat-link">
               {chat.name}
             </Link>
-            <button onClick={() => handleDeleteChat(chat.id)} className="delete-chat-button">
+            <button
+              onClick={() => handleDeleteChat(chat.id)}
+              className="delete-chat-button"
+            >
               Supprimer
             </button>
           </li>
