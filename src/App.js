@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import ChatList from "./chatlist";
-import Chat from "./chat";
-import AuthPage from "./Authpage"; // Page de connexion/authentification
+import ChatList from "./ui_connecté/chatlist";
+import Chat from "./ui_connecté/chat";
+import AuthPage from "./ui_deconnecté/Authpage"; // Page de connexion/authentification
 import "./App.css"; // Style général de l'application
 
 const App = () => {
@@ -33,7 +33,7 @@ const App = () => {
               </div>
             } 
           />
-          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/auth" element={<AuthPage />} />c
           <Route path="/chat" element={<ChatList />} />
           {/* Route modifiée avec un paramètre dynamique pour l'ID du chat */}
           <Route path="/chat/:chatId" element={<Chat />} />

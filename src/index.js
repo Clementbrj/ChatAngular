@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client'; // React 18
 import './index.css';
 import App from './App'; // Assurez-vous que App est importé correctement
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './autre/reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

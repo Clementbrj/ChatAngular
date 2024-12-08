@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"; // Importer useNavigate
 import { collection, query, orderBy, onSnapshot, addDoc } from "firebase/firestore";
-import { db } from "./firebase";
+import { db } from "../firebase/firebase";
 import { getAuth } from "firebase/auth";
 import "./chat.css";
 
